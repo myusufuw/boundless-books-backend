@@ -1,7 +1,11 @@
 {
   "name": "boundless-books-api",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "start": "bun run src/index.ts",
+    "generate": "prisma generate",
+    "seed": "prisma db seed",
+    "studio": "prisma studio"
   },
   "dependencies": {
     "hono": "^4.4.5"
