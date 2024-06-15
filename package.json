@@ -1,8 +1,8 @@
 {
   "name": "boundless-books-api",
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "start": "bun run src/index.ts",
+    "dev": "bun run --hot src/index.tsx",
+    "start": "bun run src/index.tsx",
     "generate": "prisma generate",
     "seed": "prisma db seed",
     "studio": "prisma studio"
@@ -11,6 +11,8 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@hono/swagger-ui": "^0.2.2",
+    "@hono/zod-openapi": "^0.14.4",
     "@prisma/client": "5.15.0",
     "hono": "^4.4.5"
   },
