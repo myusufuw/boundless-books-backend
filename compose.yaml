@@ -1,6 +1,6 @@
 services:
   backend:
-    image: amazingsafari-backend
+    image: boundless-books-backend
     build:
       context: .
     ports:
