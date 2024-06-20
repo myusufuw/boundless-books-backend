@@ -15,6 +15,7 @@ export const productList = [
       "https://cdn.gramedia.com/uploads/items/Atomic_Habits_C-FRONT_HC_-_Mockup.png",
     isbn: "9786020667188",
     publisher: "Gramedia",
+    price: 81000,
   },
   {
     title: "Laskar Pelangi",
@@ -31,6 +32,7 @@ export const productList = [
     imageUrl: "https://cdn.gramedia.com/uploads/items/img212.jpg",
     isbn: "9786022916628",
     publisher: "Bentang Pustaka",
+    price: 89000,
   },
   {
     title: "Guru Aini",
@@ -47,5 +49,6 @@ export const productList = [
     imageUrl: "https://cdn.gramedia.com/uploads/items/img212.jpg",
     isbn: "9786022916864",
     publisher: "Bentang Pustaka",
+    price: 90000,
   },
 ]

@@ -8,13 +8,12 @@ datasource db {
 }
 
 model Product {
-  id String @default(cuid())
+  id String @id @default(cuid())
 
   title String  @unique @db.VarChar(255)
   isbn  String? @unique @db.VarChar(255)
   slug  String  @unique @db.VarChar(255)
 
-  author          String    @db.VarChar(255)
   publicationDate DateTime? @db.Timestamptz()
   numberOfPages   Int?      @db.Integer
   length          Int?      @db.Integer // IN MILIMETER
@@ -23,8 +22,43 @@ model Product {
   language        String?   @db.VarChar(255)
   description     String    @db.Text
   imageUrl        String?   @db.VarChar(255)
-  publisher       String    @db.VarChar(255)
+  price           Int       @db.Integer
 
-  created_at DateTime? @default(now())
-  updated_at DateTime? @updatedAt
+  author   Author? @relation(fields: [authorId], references: [id])
+  authorId String? @db.VarChar(255)
+
+  publisher   Publisher? @relation(fields: [publisherId], references: [id])
+  publisherId String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Author {
+  id String @id @default(cuid())
+
+  name String @unique @db.VarChar(255)
+  slug String @unique @db.VarChar(255)
+
+  about    String? @db.Text
+  imageUrl String? @db.VarChar(255)
+
+  books Product[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Publisher {
+  id String @id @default(cuid())
+
+  name String  @unique @db.VarChar(255)
+  slug String? @unique @db.VarChar(255)
+
+  address String? @db.Text
+
+  books Product[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }

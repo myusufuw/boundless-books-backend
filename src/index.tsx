@@ -5,7 +5,7 @@ import { productsRoute } from "./products/routes"
 
 const app = new OpenAPIHono()
   // ROUTES
-  .route("/product", productsRoute)
+  .route("/products", productsRoute)
 
   // OPEN API
   .doc31("/docs", {
@@ -31,7 +31,7 @@ const app = new OpenAPIHono()
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>Book Finder REST API</title>
+          <title>Boundless Books API</title>
           <meta name="description" content="Web API about books" />
           <script src="https://cdn.tailwindcss.com"></script>
         </head>
