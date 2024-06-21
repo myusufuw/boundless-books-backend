@@ -4,11 +4,13 @@ import { HomePage } from "./home-page"
 import { productsRoute } from "./products/routes"
 import { cors } from "hono/cors"
 import { authorRoute } from "./authors/routes"
+import { publisherRoute } from "./publishers/routes"
 
 const app = new OpenAPIHono()
   // ROUTES
   .route("/products", productsRoute)
   .route("/authors", authorRoute)
+  .route("/publishers", publisherRoute)
 
   // OPEN API
   .doc31("/docs", {
