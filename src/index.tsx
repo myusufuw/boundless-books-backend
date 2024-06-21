@@ -2,10 +2,13 @@ import { OpenAPIHono } from "@hono/zod-openapi"
 import { swaggerUI } from "@hono/swagger-ui"
 import { HomePage } from "./home-page"
 import { productsRoute } from "./products/routes"
+import { cors } from "hono/cors"
+import { authorRoute } from "./authors/routes"
 
 const app = new OpenAPIHono()
   // ROUTES
   .route("/products", productsRoute)
+  .route("/authors", authorRoute)
 
   // OPEN API
   .doc31("/docs", {
@@ -41,5 +44,8 @@ const app = new OpenAPIHono()
       </html>
     )
   })
+
+  // HANDLE CORS
+  .use("/*", cors())
 
 export default app

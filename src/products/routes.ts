@@ -1,8 +1,6 @@
-import { OpenAPIHono, z } from "@hono/zod-openapi"
+import { OpenAPIHono } from "@hono/zod-openapi"
 import { CreateProduct, ProductSlug, UpdateProduct } from "./schemas"
-
 import { prisma } from "../lib/db"
-
 import * as productService from "./services"
 
 const API_TAG = ["Product"]
@@ -22,8 +20,8 @@ export const productsRoute = new OpenAPIHono()
       tags: API_TAG,
     },
     async (c) => {
-      const publisher = await productService.getAll()
-      return c.json(publisher)
+      const product = await productService.getAll()
+      return c.json(product)
     }
   )
 
@@ -136,11 +134,11 @@ export const productsRoute = new OpenAPIHono()
     async (c) => {
       const slug = c.req.param("slug")?.toString()
 
-      const book = await productService.getDetailBySlug(slug)
+      const product = await productService.getDetailBySlug(slug)
 
-      if (!book) {
+      if (!product) {
         c.status(404)
-        return c.json({ message: "Book not found" })
+        return c.json({ message: "Product not found" })
       }
 
       const deletedProduct = await productService.deleteBySlug(slug)
@@ -152,7 +150,7 @@ export const productsRoute = new OpenAPIHono()
     }
   )
 
-  // UPDATE BOOK BY SLUG
+  // UPDATE PRODUCT BY SLUG
   .openapi(
     {
       method: "put",
