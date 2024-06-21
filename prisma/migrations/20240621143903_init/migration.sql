@@ -15,8 +15,8 @@ CREATE TABLE "Product" (
     "price" INTEGER NOT NULL,
     "authorId" VARCHAR(255),
     "publisherId" TEXT,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
@@ -28,8 +28,8 @@ CREATE TABLE "Author" (
     "slug" VARCHAR(255) NOT NULL,
     "about" TEXT,
     "imageUrl" VARCHAR(255),
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Author_pkey" PRIMARY KEY ("id")
 );
@@ -40,8 +40,8 @@ CREATE TABLE "Publisher" (
     "name" VARCHAR(255) NOT NULL,
     "slug" VARCHAR(255),
     "address" TEXT,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Publisher_pkey" PRIMARY KEY ("id")
 );

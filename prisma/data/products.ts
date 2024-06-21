@@ -1,8 +1,25 @@
-export const productList = [
+type Product = {
+  title: string
+  slug: string
+  authorSlug?: string
+  publicationDate: Date
+  numberOfPages: number
+  length: number
+  width: number
+  weight: number
+  language: string
+  description: string
+  imageUrl: string
+  isbn: string
+  publisherSlug?: string
+  price: number
+}
+
+export const productList: Product[] = [
   {
     title: "Atomic Habits",
     slug: "atomic-habits",
-    author: "James Clear",
+    authorSlug: "james-clear",
     publicationDate: new Date("17 Jan 2023"),
     numberOfPages: 352,
     length: 230,
@@ -14,13 +31,13 @@ export const productList = [
     imageUrl:
       "https://cdn.gramedia.com/uploads/items/Atomic_Habits_C-FRONT_HC_-_Mockup.png",
     isbn: "9786020667188",
-    publisher: "Gramedia",
+    publisherSlug: "gramedia",
     price: 81000,
   },
   {
     title: "Laskar Pelangi",
     slug: "laskar-pelangi",
-    author: "Andrea Hirata",
+    authorSlug: "andrea-hirata",
     publicationDate: new Date("01 Feb 2023"),
     numberOfPages: 340,
     length: 205,
@@ -31,13 +48,13 @@ export const productList = [
       "Andrea Hirata adalah pemenang pertama penghargaan sastra New York Book Festival 2013 untuk The Rainbow Troops, Laskar Pelangi edisi Amerika, penerbit Farrar, Straus & Giroux, New York, kategori general fiction, dan pemenang pertama Buchawards 2013, Jerman, untuk Die Regenbogen Truppe, Laskar Pelangi edisi Jerman, penerbit Hanser Berlin. Dia juga pemenang seleksi short story majalah sastra terkemuka di Amerika, Washington Square Review, New York University, edisi winter/spring 2011 untuk short story pertamanya Dry Season. Tahun 2015 dia dianugerahi gelar Doktor Honoris Causa di bidang sastra oleh University of Warwick, UK dan Tahun 2017 menerima penghargaan budaya dari pemerintah Perancis untuk karyanya Les Guerriers de L'arc-en-ciel (Laskar Pelangi edisi Prancis, penerbit Mercure de France). Laskar Pelangi telah diadaptasi dalam bentuk film, musikal, lagu, serial TV dan koreografi oleh City Dance Company, Washington, DC serta dilayarkan di Berlinale dan Smithsonian. \n\nLaskar Pelangi telah menjadi international bestseller, diterjemahkan ke-40 bahasa asing, telah terbit dalam 22 bahasa, dan diedarkan di lebih dari 130 negara. Melalui program beasiswa, Hirata meraih Master of Science (Msc) bidang teori ekonomi dari Sheffield Hallam University, UK. Hirata juga mendapat beasiswa pendidikan sastra di IWP (International Writing Program), University of Iowa, USA. Karya Hirata berbahasa Indonesia: Laskar Pelangi, Sang Pemimpi, Edensor, Maryamah Karpov, Padang Bulan, Cinta di dalam Gelas, Sebelas Patriot, Laskar Pelangi Song Book, Ayah, Sirkus Pohon, dan Guru Aini. Karya dalam bahasa asing The Rainbow Troops, Der Träumer, Dry Season. Sejak Tahun 2010, secara mandiri Hirata mempromosikan minat baca, minat menulis, dan mendirikan museum sastra pertama dan satu-satunya di Indonesia, yaitu Museum Kata Andrea Hirata di Belitung.",
     imageUrl: "https://cdn.gramedia.com/uploads/items/img212.jpg",
     isbn: "9786022916628",
-    publisher: "Bentang Pustaka",
+    publisherSlug: "bentang-pustaka",
     price: 89000,
   },
   {
     title: "Guru Aini",
     slug: "guru-aini",
-    author: "Andrea Hirata",
+    authorSlug: "andrea-hirata",
     publicationDate: new Date("01 Feb 2020"),
     numberOfPages: 312,
     length: 200,
@@ -48,7 +65,7 @@ export const productList = [
       "Ini persamaan hidupku sekarang, Bu,” Desi menyodorkan buku catatan ke tengah meja. Bu Amanah, yang juga guru matematika tersenyum getir melihat persamaan garis lurus dengan variabel-variabel yang didefinisikan sendiri oleh Desi. Yang menarik perhatiannya adalah pengorbanan. \n\n“Pendidikan memerlukan pengorbanan, Bu. Pengorbanan itu nilai tetap, konstan, tak boleh berubah” \n\nKonon, berdasarkan penelitian antah berantah, umumnya idealisme anak muda yang baru tamat dari perguruan tinggi bertahan paling lama 4 bulan. Setelah itu mereka akan menjadi pengeluh, penggerutu, dan penyalah seperti banyak orang lainnya, lalu secara menyedihkan terseret arus deras sungai besar rutinitas dan basa-basi birokrasi lalu tunduk patuh pada sistem yang buruk. Dalam kenyataan hidup seperti itu, seberapa jauh Desi berani mempertahankan idealismenya menjadi guru matematika di sekolah pelosok? \n\n“Stunningly beautiful, highly intelligent, sangat perlu dibaca mereka yang ingin belajar.” –Firza Aulia, scholarship awardee.",
     imageUrl: "https://cdn.gramedia.com/uploads/items/img212.jpg",
     isbn: "9786022916864",
-    publisher: "Bentang Pustaka",
+    publisherSlug: "bentang-pustaka",
     price: 90000,
   },
 ]

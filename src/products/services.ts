@@ -6,12 +6,21 @@ import { CreateProduct, UpdateProduct } from "./schemas"
 import type { Product } from "@prisma/client"
 
 export const getAll = async () => {
-  return await prisma.product.findMany()
+  return await prisma.product.findMany({
+    include: {
+      publisher: true,
+      author: true,
+    },
+  })
 }
 
 export const getDetailBySlug = async (slug: string | undefined) => {
   return await prisma.product.findUnique({
     where: { slug },
+    include: {
+      publisher: true,
+      author: true,
+    },
   })
 }
 

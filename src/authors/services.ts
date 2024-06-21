@@ -4,12 +4,19 @@ import { CreateAuthor, UpdateAuthor } from "./schemas"
 import type { Author } from "@prisma/client"
 
 export const getAll = async () => {
-  return await prisma.author.findMany()
+  return await prisma.author.findMany({
+    include: {
+      books: true,
+    },
+  })
 }
 
 export const getDetailBySlug = async (slug: string | undefined) => {
   return await prisma.author.findUnique({
     where: { slug },
+    include: {
+      books: true,
+    },
   })
 }
 
