@@ -70,6 +70,8 @@ export const productsRoute = new OpenAPIHono()
               schema: CreateProduct,
             },
           },
+          description:
+            "NOTE: weight in grams, length and width in millimeters.",
         },
       },
       description: "Create new product",
@@ -163,6 +165,8 @@ export const productsRoute = new OpenAPIHono()
               schema: UpdateProduct,
             },
           },
+          description:
+            "NOTE: weight in grams, length and width in millimeters.",
         },
       },
       description: "Update the product",
