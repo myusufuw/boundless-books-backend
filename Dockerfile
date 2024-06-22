@@ -8,10 +8,13 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install dependencies
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # Generate Prisma
 RUN bun run generate
+
+# Bind the app to port 3000
+EXPOSE 3001
 
 # Run the application
 CMD ["bun", "start"]
