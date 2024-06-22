@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id String @id @default(cuid())
+
+  title String  @unique @db.VarChar(255)
+  isbn  String? @unique @db.VarChar(255)
+  slug  String  @unique @db.VarChar(255)
+
+  publicationDate DateTime? @db.Timestamptz()
+  numberOfPages   Int?      @db.Integer
+  length          Int?      @db.Integer // IN MILIMETER
+  width           Int?      @db.Integer // IN MILIMETER
+  weight          Int?      @db.Integer // IN GRAM
+  language        String?   @db.VarChar(255)
+  description     String    @db.Text
+  imageUrl        String?   @db.VarChar(255)
+  price           Int       @db.Integer
+
+  author   Author? @relation(fields: [authorId], references: [id])
+  authorId String? @db.VarChar(255)
+
+  publisher   Publisher? @relation(fields: [publisherId], references: [id])
+  publisherId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Author {
+  id String @id @default(cuid())
+
+  name String @unique @db.VarChar(255)
+  slug String @unique @db.VarChar(255)
+
+  about    String? @db.Text
+  imageUrl String? @db.VarChar(255)
+
+  books Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Publisher {
+  id String @id @default(cuid())
+
+  name String  @unique @db.VarChar(255)
+  slug String? @unique @db.VarChar(255)
+
+  address String? @db.Text
+
+  books Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
