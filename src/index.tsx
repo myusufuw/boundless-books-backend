@@ -7,11 +7,6 @@ import { authorRoute } from "./authors/routes"
 import { publisherRoute } from "./publishers/routes"
 
 const app = new OpenAPIHono()
-  // ROUTES
-  .route("/products", productsRoute)
-  .route("/authors", authorRoute)
-  .route("/publishers", publisherRoute)
-
   // OPEN API
   .doc31("/docs", {
     openapi: "3.0.0",
@@ -22,6 +17,14 @@ const app = new OpenAPIHono()
         "Boundless Books API is a backend application that provides various information about simple online book store.",
     },
   })
+
+  // HANDLE CORS
+  .use("/*", cors())
+
+  // ROUTES
+  .route("/products", productsRoute)
+  .route("/authors", authorRoute)
+  .route("/publishers", publisherRoute)
 
   // SWAGGER UI
   .get("/ui", swaggerUI({ url: "/docs" }))
@@ -46,8 +49,5 @@ const app = new OpenAPIHono()
       </html>
     )
   })
-
-  // HANDLE CORS
-  .use("/*", cors())
 
 export default app
