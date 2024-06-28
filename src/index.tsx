@@ -5,9 +5,18 @@ import { productsRoute } from "./products/routes"
 import { cors } from "hono/cors"
 import { authorRoute } from "./authors/routes"
 import { publisherRoute } from "./publishers/routes"
+import { bearerAuth } from "hono/bearer-auth"
+import { userRoute } from "./users/routes"
 
 const app = new OpenAPIHono()
-  // OPEN API
+// AUTH
+app.openAPIRegistry.registerComponent("securitySchemes", "Bearer", {
+  type: "http",
+  scheme: "bearer",
+})
+
+// OPEN API
+app
   .doc31("/docs", {
     openapi: "3.0.0",
     info: {
@@ -18,6 +27,9 @@ const app = new OpenAPIHono()
     },
   })
 
+  // AUTH
+  .use("/products", bearerAuth({ token: "asd" }))
+
   // HANDLE CORS
   .use("/*", cors())
 
@@ -25,6 +37,7 @@ const app = new OpenAPIHono()
   .route("/products", productsRoute)
   .route("/authors", authorRoute)
   .route("/publishers", publisherRoute)
+  .route("/users", userRoute)
 
   // SWAGGER UI
   .get("/ui", swaggerUI({ url: "/docs" }))
