@@ -63,7 +63,8 @@ export const productList: Product[] = [
     language: "Indonesian",
     description:
       "Ini persamaan hidupku sekarang, Bu,” Desi menyodorkan buku catatan ke tengah meja. Bu Amanah, yang juga guru matematika tersenyum getir melihat persamaan garis lurus dengan variabel-variabel yang didefinisikan sendiri oleh Desi. Yang menarik perhatiannya adalah pengorbanan. \n\n“Pendidikan memerlukan pengorbanan, Bu. Pengorbanan itu nilai tetap, konstan, tak boleh berubah” \n\nKonon, berdasarkan penelitian antah berantah, umumnya idealisme anak muda yang baru tamat dari perguruan tinggi bertahan paling lama 4 bulan. Setelah itu mereka akan menjadi pengeluh, penggerutu, dan penyalah seperti banyak orang lainnya, lalu secara menyedihkan terseret arus deras sungai besar rutinitas dan basa-basi birokrasi lalu tunduk patuh pada sistem yang buruk. Dalam kenyataan hidup seperti itu, seberapa jauh Desi berani mempertahankan idealismenya menjadi guru matematika di sekolah pelosok? \n\n“Stunningly beautiful, highly intelligent, sangat perlu dibaca mereka yang ingin belajar.” –Firza Aulia, scholarship awardee.",
-    imageUrl: "https://cdn.gramedia.com/uploads/items/img212.jpg",
+    imageUrl:
+      "https://cdn.gramedia.com/uploads/items/COVER_GURU_AINI_zELbGLS.png",
     isbn: "9786022916864",
     publisherSlug: "bentang-pustaka",
     price: 90000,
