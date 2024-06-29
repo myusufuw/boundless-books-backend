@@ -7,10 +7,12 @@ import { authorList } from "./data/authors"
 
 async function main() {
   // SEED THE PUBLISHER DATA
+  await prisma.publisher.deleteMany()
   await prisma.publisher.createMany({
     data: publisherList,
   })
   // SEED THE AUTHORS DATA
+  await prisma.author.deleteMany()
   await prisma.author.createMany({
     data: authorList,
   })

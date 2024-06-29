@@ -5,7 +5,9 @@
     "start": "bun run src/index.tsx",
     "generate": "prisma generate",
     "seed": "prisma db seed",
-    "studio": "prisma studio"
+    "studio": "prisma studio",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -14,7 +16,8 @@
     "@hono/swagger-ui": "^0.2.2",
     "@hono/zod-openapi": "^0.14.4",
     "@prisma/client": "5.15.0",
-    "hono": "^4.4.5"
+    "hono": "^4.4.5",
+    "oslo": "^1.2.1"
   },
   "devDependencies": {
     "@types/bun": "latest",
