@@ -7,6 +7,7 @@ import { cartRoute } from "./carts/routes"
 import { productsRoute } from "./products/routes"
 import { publisherRoute } from "./publishers/routes"
 import { userRoute } from "./users/routes"
+import { orderRoute } from "./order-items/routes"
 
 const app = new OpenAPIHono()
 // HANDLE CORS
@@ -32,6 +33,7 @@ app.doc31("/docs", {
 // ROUTES
 app.route("/users", userRoute)
 app.route("/products", productsRoute)
+app.route("/orders", orderRoute)
 app.route("/cart", cartRoute)
 app.route("/authors", authorRoute)
 app.route("/publishers", publisherRoute)

@@ -1,8 +1,7 @@
 import { OpenAPIHono } from "@hono/zod-openapi"
-import { prisma } from "../lib/db"
-import { checkUserToken } from "../middleware/check-user-token"
-import { getAll } from "./services"
 import type { User } from "@prisma/client"
+import { checkUserToken } from "../middleware/check-user-token"
+import { getOrderCart } from "./services"
 
 const API_TAG = ["Cart"]
 
@@ -19,12 +18,12 @@ export const cartRoute = new OpenAPIHono<{
   Variables: Variables
 }>()
 
-  // GET ALL ORDER
+  // GET ALL CARTS
   .openapi(
     {
       method: "get",
       path: "/",
-      description: "Get all orders",
+      description: "Get all carts",
       security: [
         {
           Bearer: [],
@@ -32,10 +31,10 @@ export const cartRoute = new OpenAPIHono<{
       ],
       responses: {
         200: {
-          description: "List of orders",
+          description: "List of carts",
         },
         400: {
-          description: "Failed to get all orders",
+          description: "Failed to get order carts",
         },
       },
       middleware: checkUserToken(),
@@ -43,7 +42,8 @@ export const cartRoute = new OpenAPIHono<{
     },
     async (c) => {
       const user = c.var.user
+      const carts = await getOrderCart(user.id)
 
-      return await getAll(c, user)
+      return c.json(carts)
     }
   )
