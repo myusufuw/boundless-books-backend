@@ -1,9 +1,10 @@
-import { OpenAPIHono } from "@hono/zod-openapi"
 import { swaggerUI } from "@hono/swagger-ui"
-import { HomePage } from "./home-page"
-import { productsRoute } from "./products/routes"
+import { OpenAPIHono } from "@hono/zod-openapi"
 import { cors } from "hono/cors"
 import { authorRoute } from "./authors/routes"
+import { HomePage } from "./home-page"
+import { cartRoute } from "./carts/routes"
+import { productsRoute } from "./products/routes"
 import { publisherRoute } from "./publishers/routes"
 import { userRoute } from "./users/routes"
 
@@ -29,10 +30,11 @@ app.doc31("/docs", {
 })
 
 // ROUTES
+app.route("/users", userRoute)
 app.route("/products", productsRoute)
+app.route("/cart", cartRoute)
 app.route("/authors", authorRoute)
 app.route("/publishers", publisherRoute)
-app.route("/users", userRoute)
 
 // SWAGGER UI
 app.get("/ui", swaggerUI({ url: "/docs" }))
