@@ -5,6 +5,7 @@ import { UsernameUser, CreateUser, LoginUser } from "./schemas"
 import { prisma } from "../lib/db"
 import { verifyPassword } from "../lib/password"
 import { createToken, validateToken } from "../lib/jwt"
+import { checkUserToken } from "../middleware/check-user-token"
 
 const API_TAG = ["User"]
 
@@ -194,35 +195,15 @@ export const userRoute = new OpenAPIHono()
           description: "Information not found",
         },
       },
+      middleware: checkUserToken(),
       tags: API_TAG,
     },
     async (c) => {
-      const authHeader = c.req.header("Authorization")
+      const user = c.var.user
 
-      if (!authHeader) {
-        c.status(401)
-        return c.json({ message: "Authorization header is missing" })
-      }
-
-      const token = authHeader.split(" ")[1]
-
-      const decodedToken = await validateToken(token)
-      if (!token || !decodedToken) {
-        c.status(401)
-        return c.json({ message: "Invalid or expired token" })
-      }
-
-      const userId = decodedToken.subject
-
-      if (!userId) {
-        c.status(401)
-        return c.json({ message: "User not found" })
-      }
-
-      const user = await prisma.user.findUnique({
-        where: { id: userId },
+      return c.json({
+        message: "User data",
+        user,
       })
-
-      return c.json({ user })
     }
   )
