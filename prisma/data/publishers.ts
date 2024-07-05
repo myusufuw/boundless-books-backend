@@ -11,4 +11,19 @@ export const publisherList = [
     address:
       "Jl. Pesanggrahan No.8 RT/RW : 04/36, Sanggrahan, Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584",
   },
+  {
+    slug: "kawah-media",
+    name: "Kawah Media",
+    address: "-",
+  },
+  {
+    slug: "penerbit-buku-kompas",
+    name: "Penerbit Buku Kompas",
+    address: "Jl. Palmerah Selatan No. 26-28, Jakarta, Indonesia 10270.",
+  },
+  {
+    slug: "sabak-grip",
+    name: "Penerbit Sabak Grip",
+    address: "-",
+  },
 ]

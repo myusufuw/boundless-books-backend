@@ -6,7 +6,11 @@ export const getOrderCart = async (userId: string) => {
     include: {
       OrderItem: {
         include: {
-          product: true,
+          product: {
+            include: {
+              author: true,
+            },
+          },
         },
       },
     },
