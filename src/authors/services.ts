@@ -15,7 +15,11 @@ export const getDetailBySlug = async (slug: string | undefined) => {
   return await prisma.author.findUnique({
     where: { slug },
     include: {
-      books: true,
+      books: {
+        include: {
+          author: true,
+        },
+      },
     },
   })
 }
