@@ -3,6 +3,52 @@ import type { User } from "@prisma/client"
 
 import type { Context } from "hono"
 
+export const updateOrderItem = async (c: Context, id: string | undefined) => {
+  const body = await c.req.json()
+
+  const orderItem = await prisma.orderItem.findUnique({
+    where: { id },
+  })
+
+  if (!orderItem) {
+    c.status(404)
+    return c.json({ message: "Order item not found" })
+  }
+
+  const updatedOrderItem = await prisma.orderItem.update({
+    where: { id },
+    data: {
+      ...orderItem,
+      quantity: body.quantity,
+    },
+  })
+
+  return c.json({
+    message: "Successfully updated the order item",
+    updatedOrderItem,
+  })
+}
+
+export const deleteOrder = async (c: Context, id: string | undefined) => {
+  const order = await prisma.orderItem.findUnique({
+    where: { id },
+  })
+
+  if (!order) {
+    c.status(404)
+    return c.json({ message: "Order item not found" })
+  }
+
+  const deletedOrder = await prisma.orderItem.delete({
+    where: { id },
+  })
+
+  return c.json({
+    message: "Successfully deleted the order item",
+    deletedOrder,
+  })
+}
+
 export const createOrder = async (
   c: Context,
   user: User,
@@ -60,4 +106,8 @@ export const createOrder = async (
   return c.json({
     message: "Successfully added the order item",
   })
+}
+
+export const getAllOrder = async () => {
+  return await prisma.orderItem.findMany()
 }
