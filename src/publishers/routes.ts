@@ -1,5 +1,5 @@
 import { CreatePublisher, PublisherSlug, UpdatePublisher } from "./schemas"
-import { OpenAPIHono, z } from "@hono/zod-openapi"
+import { OpenAPIHono } from "@hono/zod-openapi"
 import * as publisherService from "./services"
 import { prisma } from "../lib/db"
 
